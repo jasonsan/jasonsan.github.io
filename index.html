@@ -3,207 +3,337 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>HTS Accounting Services | Professional CPA Firm</title>
+    <title>HTS Accounting Services | Professional CPA Solutions</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
     <style>
+        /* All previous styles remain, just updating colors */
         :root {
-            --primary-color: #2c3e50;
-            --secondary-color: #34495e;
-            --accent-color: #3498db;
-            --text-color: #333;
-            --light-bg: #f8f9fa;
+            --primary: #2c3e50;
+            --secondary: #34495e;
+            --neutral-100: #ffffff;
+            --neutral-200: #f8f9fa;
+            --neutral-300: #e9ecef;
+            --neutral-400: #dee2e6;
+            --text-primary: #2c3e50;
+            --text-secondary: #6c757d;
+            --image-placeholder: #ff69b4; /* Only for image placeholders */
         }
-        
+
+        /* Previous styles for basic elements */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
-            line-height: 1.8;
-            margin: 0;
-            padding: 0;
-            color: var(--text-color);
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            color: var(--text-primary);
+            background-color: var(--neutral-100);
         }
 
-        header {
-            background-color: var(--primary-color);
-            color: white;
-            padding: 2rem 1rem;
+        /* Navbar styles */
+        .navbar {
+            position: fixed;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            padding: 1rem 0;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
         }
 
-        nav {
-            background-color: var(--secondary-color);
-            padding: 1rem;
-            position: sticky;
-            top: 0;
-            z-index: 100;
-        }
-
-        nav ul {
-            list-style: none;
-            padding: 0;
-            margin: 0;
+        .nav-content {
+            max-width: 1200px;
+            margin: 0 auto;
             display: flex;
-            justify-content: center;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2rem;
+        }
+
+        .nav-links {
+            display: flex;
             gap: 2rem;
         }
 
-        nav a {
-            color: white;
+        .nav-links a {
             text-decoration: none;
+            color: var(--text-primary);
             font-weight: 500;
+            transition: color 0.3s ease;
         }
-
-        nav a:hover {
-            color: var(--accent-color);
-        }
-
+        /* Layout Styles 
         .container {
             max-width: 1200px;
             margin: 0 auto;
             padding: 0 2rem;
+        }*/
+        /* Hero section with logo */
+        .parallax-section {
+            position: relative;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            background-image: url('/images/Lights Background.jpg');
+            background-attachment: fixed;
+            background-size: cover; /* cover contain auto*/
+            background-position: center;
         }
 
-        .section {
+        .logo-container {
+            background: rgba(255, 255, 255, 0.8); /* Semi-transparent background */
+            /*background: var(--neutral-100);*/
+            padding: 3rem;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            max-width: 600px;
+            width: 90%;
+            /* height: auto; */
+            height: 50vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* Content sections */
+        .about-image {
+            width: 40%;
+            height: auto; /* Keeps the aspect ratio
+            aspect-ratio: 16/9;*/ 
+            margin: 2rem 0;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+        }
+        .content-section {
+            padding: 8rem 2rem;
+            background: var(--neutral-100);
+        }
+
+        .scroll-section {
+            display: flex;
+            gap: 4rem;
             padding: 4rem 0;
         }
 
-        .section:nth-child(even) {
-            background-color: var(--light-bg);
+        .scroll-content {
+            flex: 1;
+        }
+
+        .sticky-image {
+            position: sticky;
+            top: 100px;
+            height: 400px;
+            /* background-color: var(--image-placeholder); */
+            border-radius: 8px;
+            margin: 2rem 0;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .service-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 4rem;
         }
 
         .service-card {
-            background: white;
+            background: var(--neutral-200);
             padding: 2rem;
-            margin: 1rem 0;
             border-radius: 8px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
         }
 
-        .service-list {
-            padding-left: 1.5rem;
+        .service-card:hover {
+            transform: translateY(-10px);
         }
 
-        .service-list li {
-            margin-bottom: 1rem;
+        .image-placeholder {
+            width: 100%;
+            aspect-ratio: 16/9;
+            margin: 2rem 0;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+        }
+
+        .topic-image {
+            width: 100%;
+            height: auto; /* Keeps the aspect ratio
+            aspect-ratio: 16/9;*/ 
+            margin: 2rem 0;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
         }
 
         .contact-info {
-            background: white;
+            background: var(--neutral-200);
             padding: 2rem;
             border-radius: 8px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
             margin: 2rem 0;
-        }
-
-        .hours {
-            margin: 2rem 0;
+            text-align: center;
         }
 
         footer {
-            background-color: var(--primary-color);
+            background-color: var(--primary);
             color: white;
             text-align: center;
             padding: 2rem;
             margin-top: 2rem;
         }
-
-        @media (max-width: 768px) {
-            nav ul {
+        
+        @media (max-width: 768px) { 
+            .about-image {
+                width: 100%;
+            }
+            .scroll-section {
                 flex-direction: column;
-                text-align: center;
-                gap: 1rem;
+            }
+            
+            .sticky-image {
+                position: relative;
+                top: 0;
+            }
+
+            .logo-container {
+                height: 60vh;
+                padding: 2rem;
             }
         }
     </style>
 </head>
 <body>
-    <header>
-        <div class="container">
-            <h1>HTS Accounting Services</h1>
-            <p>Professional CPA Services for Your Business Success</p>
-        </div>
-    </header>
-
-    <nav>
-        <ul>
-            <li><a href="#about">About</a></li>
-            <li><a href="#services">Services</a></li>
-            <li><a href="#contact">Contact</a></li>
-        </ul>
-    </nav>
-
-    <main>
-        <section id="about" class="section">
-            <div class="container">
-                <h2>About HTS</h2>
-                <p>At HTS Accounting Services, a trusted CPA firm, we are dedicated to supporting small and medium-sized businesses, as well as individuals, with expert bookkeeping, payroll, and tax return services. Our mission is to provide you with peace of mind through professional, reliable financial solutions, allowing you to focus on what matters most - growing your business and enjoying life.</p>
-                <p>We pride ourselves on offering personalized solutions tailored to meet your unique financial needs. Whether you're in the construction, manufacturing, or service industry, our team is here to help you stay financially confident and prepared for any audits or challenges that may arise.</p>
-                <p>Partner with HTS Accounting Services and take the next step toward achieving your financial success with confidence and ease.</p>
+    <nav class="navbar">
+        <div class="nav-content">
+            <div class="logo">HTS Accounting</div>
+            <div class="nav-links">
+                <a href="#about">About</a>
+                <a href="#services">Services</a>
+                <a href="#contact">Contact</a>
             </div>
-        </section>
+        </div>
+    </nav>
+    <!--
+    <img src="/images/TAX Wood Blocks On Chocolate Coins.jpg" alt="HTS Accounting Services Logo">
+    <img src="/images/HTS LOGO Small.png" alt="HTS Accounting Services Logo">
+    -->
+    <section class="parallax-section"> 
+        <div class="logo-container"> 
+            <svg class="logo-svg" viewBox="0 0 350 100" xmlns="http://www.w3.org/2000/svg">
+                <text x="100" y="45" font-family="Arial" font-size="32" font-weight="bold" fill="#2c3e50">HTS</text>
+                <text x="100" y="75" font-family="Arial" font-size="16" fill="#34495e">ACCOUNTING SERVICES</text>
+                <!-- <rect x="30" y="20" width="40" height="60" fill="#ff69b4"/> -->
+                <image x="10" y="20" width="80" href="/images/HTS LOGO Small.png"/>
+            </svg>
+        </div>
+    </section>
 
-        <section id="services" class="section">
-            <div class="container">
-                <h2>Our Services</h2>
-                
-                <div class="service-card">
-                    <h3>1. Bookkeeping and Payroll Services</h3>
-                    <ul class="service-list">
-                        <li><strong>Accounts Receivable:</strong> Efficiently managing customer invoices and collections.</li>
-                        <li><strong>Accounts Payable:</strong> Ensuring timely and accurate payments to vendors.</li>
-                        <li><strong>Bank Reconciliation:</strong> Keeping your financial records accurate and up to date.</li>
-                        <li><strong>Payroll and Statutory Remittance:</strong> Handling payroll processing and compliance with regulatory requirements.</li>
+    <section id="about" class="content-section">
+        <div class="container">
+            <div class="scroll-section">
+                <div class="scroll-content">
+                    <h2 data-aos="fade-up">About HTS</h2>
+                    <p data-aos="fade-up">At HTS Accounting Services, we are dedicated to supporting small and medium-sized businesses with expert bookkeeping, payroll, and tax return services.</p>
+                    <p data-aos="fade-up" data-aos-delay="100">Our mission is to provide you with peace of mind through professional, reliable financial solutions, allowing you to focus on what matters most - growing your business and enjoying life.</p>
+                    <p data-aos="fade-up" data-aos-delay="200">We pride ourselves on offering personalized solutions tailored to meet your unique financial needs. Whether you're in the construction, manufacturing, or service industry, our team is here to help you stay financially confident and prepared for any audits or challenges that may arise.</p>
+                </div>
+                <img src="/images/Review.jpg" alt="HTS Accounting Services Logo" class="about-image">
+                <!--<div class="sticky-image">
+                    <img src="/images/Pen & Calculator.jpg" alt="HTS Accounting Services Logo" class="topic-image">
+                </div>-->
+            </div>
+        </div>
+    </section>
+
+    <section id="services" class="content-section">
+        <div class="container">
+            <h2 data-aos="fade-up">Our Services</h2>
+            <div class="service-grid">
+                <div class="service-card" data-aos="fade-up">
+                    <h3>Bookkeeping & Payroll Services</h3>
+                    <img src="/images/Lonely Piggybank.jpg" alt="HTS Accounting Services Logo" class="topic-image">
+                    <ul>
+                        <li>Accounts Receivable</li>
+                        <li>Accounts Payable</li>
+                        <li>Bank Reconciliation</li>
+                        <li>Payroll and Statutory Remittance</li>
                     </ul>
-                    <p>We offer comprehensive bookkeeping and payroll services tailored to your needs, whether you use QuickBooks, Sage, Xero, or other accounting software. If you're not ready to invest in software, we can deliver these services using Excel, ensuring flexibility and convenience.</p>
-                    <p><strong>Let the experts handle your financial processes so you can focus on what truly matters—growing your business and enjoying life.</strong></p>
                 </div>
 
-                <div class="service-card">
-                    <h3>2. Accounting Services</h3>
-                    <ul class="service-list">
-                        <li><strong>Financial Reporting:</strong> Gain clear and accurate insights into your business's financial health with timely, reliable reports.</li>
-                        <li><strong>Costing Methods:</strong> Make informed business decisions with customized costing reports and methodologies.</li>
-                        <li><strong>Regulatory Compliance:</strong> Navigate complex accounting regulations with ease and confidence.</li>
-                        <li><strong>Strategic Decision-Making Support:</strong> Empower your business strategies with data-driven insights.</li>
+                <div class="service-card" data-aos="fade-up" data-aos-delay="100">
+                    <h3>Accounting Services</h3>
+                    <img src="/images/Pen & Calculator Narrow.jpg" alt="HTS Accounting Services Logo" class="topic-image">
+                    <ul>
+                        <li>Financial Reporting</li>
+                        <li>Costing Methods</li>
+                        <li>Regulatory Compliance</li>
+                        <li>Strategic Decision-Making Support</li>
                     </ul>
-                    <p>At <strong>HTS</strong>, we deliver accurate and timely financial reports that provide valuable insights for your business. Our solutions help reduce costs and ensure your financial decisions are backed by robust data.</p>
                 </div>
 
-                <div class="service-card">
-                    <h3>3. Tax Services</h3>
-                    <p>We specialize in tax services for:</p>
-                    <ul class="service-list">
-                        <li>Corporations</li>
-                        <li>Individuals</li>
-                        <li>Trusts</li>
+                <div class="service-card" data-aos="fade-up" data-aos-delay="200">
+                    <h3>Tax Services</h3>
+                    <img src="/images/Plant In Cup of Coins.jpg" alt="HTS Accounting Services Logo" class="topic-image">
+                    <ul>
+                        <li>Corporate Tax</li>
+                        <li>Individual Tax</li>
+                        <li>Trust Tax</li>
                         <li>Not-for-Profit Organizations</li>
                     </ul>
-                    <p>Tax laws are constantly evolving. Our experienced tax advisors stay ahead of the latest changes, ensuring compliance while minimizing your tax liability. Trust us to help you navigate the complexities of taxation with precision and expertise.</p>
                 </div>
             </div>
-        </section>
+        </div>
+    </section>
 
-        <section id="contact" class="section">
-            <div class="container">
-                <h2>Contact Us</h2>
-                <div class="contact-info">
-                    <div class="hours">
-                        <h3>Office Hours</h3>
-                        <p>Mon-Fri: 8:00am – 5:00pm<br>
-                        Sat-Sun: Closed</p>
-                    </div>
-                    
-                    <h3>Get in Touch</h3>
-                    <p><strong>Address:</strong> 200-8208 Swenson Way Delta, BC V4G 1J6</p>
-                    <p><strong>Phone:</strong> 778.708.6707</p>
-                    <p><strong>Email:</strong> hillary@htscpa.ca</p>
-                    <p><strong>Website:</strong> www.htscpa.ca</p>
-                </div>
+    <section id="contact" class="content-section">
+        <div class="container">
+            <h2 data-aos="fade-up">Contact Us</h2>
+            <div class="contact-info" data-aos="fade-up">
+                <h3>Office Hours</h3>
+                <p>Mon-Fri: 8:00am – 5:00pm<br>
+                Sat-Sun: Closed</p>
+                
+                <h3>Get in Touch</h3>
+                <p>200-8208 Swenson Way Delta, BC V4G 1J6</p>
+                <p>778.708.6707</p>
+                <p>hillary@htscpa.ca</p>
+                <p>www.htscpa.ca</p>
             </div>
-        </section>
-    </main>
+        </div>
+    </section>
 
     <footer>
         <div class="container">
             <p>&copy; 2025 HTS Accounting Services. All rights reserved.</p>
         </div>
     </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+    <script>
+        AOS.init({
+            duration: 1000,
+            once: true,
+            offset: 100
+        });
+    </script>
 </body>
 </html>
